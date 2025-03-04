@@ -23,10 +23,11 @@ const TodoForm = ({ addTodo }) => {
 
     return (
         <div className="flex flex-col">
-            <form className="flex justify-between items-center py-2 my-2">
+            <form className="flex justify-between items-center">
                 <input
+                    id = "todoInput"
                     type="text"
-                    className="w-full p-2 bg-transparent focus:outline-0 focus:border-b border-slate-500"
+                    className="w-full p-2 pl-10 bg-transparent focus:outline-0 focus:border-b border-slate-500"
                     placeholder=""
                     onChange={handleUpdate}
                     onKeyDown={handleKeyDown}

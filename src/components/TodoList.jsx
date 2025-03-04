@@ -37,7 +37,7 @@ const TodoList = () => {
     console.log("removedTodos", removedTodos);
 
     return (
-        <div className="container mx-auto max-w-md p-4 md:bg-background2 md:ring-3 ring-slate-700 md:rounded-2xl md:my-20">
+        <div className="container mx-auto max-w-md p-4 md:rounded-2xl md:my-auto flex flex-col">
             <h1 className="text-accent font-bold text-4xl mb-2 md:mb-6">
                 To Do List
             </h1>
@@ -45,6 +45,10 @@ const TodoList = () => {
                 <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
             ))}
             <TodoForm addTodo={addTodo} />
+            <div className="flex-1"
+                onClick={() => {todoInput.focus();}}
+            >
+            </div>
         </div>
     );
 };

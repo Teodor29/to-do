@@ -18,8 +18,8 @@ const TodoItem = ({ todo, removeTodo }) => {
 
     return (
         <div>
-            <div className="flex justify-between items-center py-2 my-2">
-                <div className="flex items-center">
+            <div className="flex justify-between items-center">
+                <div className="flex items-center w-full">
                     <label className="flex items-center cursor-pointer">
                         <input
                             type="checkbox"
@@ -33,7 +33,7 @@ const TodoItem = ({ todo, removeTodo }) => {
                     <input
                         type="text"
                         value={todo.text}
-                        className="ml-4 focus:outline-hidden focus:border-b border-slate-500"
+                        className="ml-4 focus:outline-hidden focus:border-b border-slate-500 py-2 w-full"
                         onClick={(e) => e.target.select()}
                         onChange={() => {}}
                     />
