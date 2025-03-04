@@ -4,13 +4,19 @@ import TodoForm from "./TodoForm";
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
+    const [removedTodos, setRemovedTodos] = useState([]);
 
     useEffect(() => {
-        const savedTodos = localStorage.getItem("todos");
-        if (savedTodos) {
-            setTodos(JSON.parse(savedTodos));
+        const storedTodos = localStorage.getItem("todos");
+        if (storedTodos) {
+            setTodos(JSON.parse(storedTodos));
         }
-    }, []);
+        const storedRemovedTodos = localStorage.getItem("removedTodos");
+        if (storedRemovedTodos) {
+            setRemovedTodos(JSON.parse(storedRemovedTodos));
+        }
+    }
+    , []);
 
     const addTodo = (text) => {
         const newTodo = { id: Date.now(), text };
@@ -18,13 +24,25 @@ const TodoList = () => {
         localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
     };
 
+    const removeTodo = (id) => {
+        console.log("delete", id);
+        const newTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(newTodos);
+        const removedTodo = todos.find((todo) => todo.id === id);
+        setRemovedTodos([...removedTodos, removedTodo]);
+        localStorage.setItem("todos", JSON.stringify(newTodos));
+        localStorage.setItem("removedTodos", JSON.stringify([...removedTodos, removedTodo]));
+    };
+
+    console.log("removedTodos", removedTodos);
+
     return (
         <div className="container mx-auto max-w-md p-4 md:bg-background2 md:ring-3 ring-slate-700 md:rounded-2xl md:my-20">
             <h1 className="text-accent font-bold text-4xl mb-2 md:mb-6">
                 To Do List
             </h1>
             {todos.map((todo) => (
-                <TodoItem key={todo.id} todo={todo} />
+                <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
             ))}
             <TodoForm addTodo={addTodo} />
         </div>
