@@ -1,21 +1,34 @@
-import React from 'react'
-import TodoItem from './TodoItem'
-
-const todos = [
-    { id: 1, text: 'Learn React' },
-    { id: 2, text: 'Learn Tailwind CSS' },
-    { id: 3, text: 'Build a To Do List App' },
-]
+import { useState, useEffect } from "react";
+import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 
 const TodoList = () => {
-  return (
-      <div className="container mx-auto max-w-lg bg-slate-900 p-4">
-          <h1 className='text-orange-500 font-bold text-2xl' >To Do List</h1>
-            {todos.map((todo) => (
-                <TodoItem key={todo.id} text={todo.text} />
-            ))}
-      </div>
-  );
-}
+    const [todos, setTodos] = useState([]);
 
-export default TodoList
+    useEffect(() => {
+        const savedTodos = localStorage.getItem("todos");
+        if (savedTodos) {
+            setTodos(JSON.parse(savedTodos));
+        }
+    }, []);
+
+    const addTodo = (text) => {
+        const newTodo = { id: Date.now(), text };
+        setTodos([...todos, newTodo]);
+        localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
+    };
+
+    return (
+        <div className="container mx-auto max-w-md p-4 md:bg-background2 md:ring-3 ring-slate-700 md:rounded-2xl md:my-20">
+            <h1 className="text-accent font-bold text-4xl mb-2 md:mb-6">
+                To Do List
+            </h1>
+            {todos.map((todo) => (
+                <TodoItem key={todo.id} todo={todo} />
+            ))}
+            <TodoForm addTodo={addTodo} />
+        </div>
+    );
+};
+
+export default TodoList;
