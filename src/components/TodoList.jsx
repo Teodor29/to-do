@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const [removedTodos, setRemovedTodos] = useState([]);
+    const markedTodos = useRef([]);
+    const removeTodoTimeout = useRef(null);
 
     useEffect(() => {
         const storedTodos = localStorage.getItem("todos");
         if (storedTodos) {
             setTodos(JSON.parse(storedTodos));
+            console.log("storedTodos", JSON.parse(storedTodos));
         }
         const storedRemovedTodos = localStorage.getItem("removedTodos");
         if (storedRemovedTodos) {
             setRemovedTodos(JSON.parse(storedRemovedTodos));
+            console.log("storedRemovedTodos", JSON.parse(storedRemovedTodos));
         }
-    }
-    , []);
+    }, []);
 
     const addTodo = (text) => {
         const newTodo = { id: Date.now(), text };
@@ -24,32 +27,71 @@ const TodoList = () => {
         localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
     };
 
-    const removeTodo = (id) => {
-        console.log("delete", id);
-        const newTodos = todos.filter((todo) => todo.id !== id);
-        setTodos(newTodos);
-        const removedTodo = todos.find((todo) => todo.id === id);
-        setRemovedTodos([...removedTodos, removedTodo]);
-        localStorage.setItem("todos", JSON.stringify(newTodos));
-        localStorage.setItem("removedTodos", JSON.stringify([...removedTodos, removedTodo]));
+    const updateTodo = (id, text) => {
+        const updatedTodos = todos.map((todo) => {
+            if (todo.id === id) {
+                return { ...todo, text };
+            } else {
+                return todo;
+            }
+        });
+        setTodos(updatedTodos);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos));
     };
 
-    console.log("removedTodos", removedTodos);
+    const handleMark = (id, checked) => {
+        if (checked) {
+            if (!markedTodos.current.includes(id)) {
+                markedTodos.current.push(id);
+            }
+        } else {
+            markedTodos.current = markedTodos.current.filter(
+                (todoId) => todoId !== id
+            );
+        }
+
+        if (removeTodoTimeout.current) {
+            clearTimeout(removeTodoTimeout.current);
+        }
+        removeTodoTimeout.current = setTimeout(() => {
+            const newTodos = todos.filter(
+                (todo) => !markedTodos.current.includes(todo.id)
+            );
+            const removed = todos.filter((todo) =>
+                markedTodos.current.includes(todo.id)
+            );
+            setTodos(newTodos);
+            setRemovedTodos([...removedTodos, ...removed]);
+            localStorage.setItem("todos", JSON.stringify(newTodos));
+            localStorage.setItem(
+                "removedTodos",
+                JSON.stringify([...removedTodos, ...removed])
+            );
+            markedTodos.current = [];
+        }, 3000);
+    };
 
     return (
-        <div className="container mx-auto max-w-md p-4 md:rounded-2xl md:my-auto flex flex-col">
-            <h1 className="text-accent font-bold text-4xl mb-2 md:mb-6">
-                To Do List
-            </h1>
-            {todos.map((todo) => (
-                <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
-            ))}
-            <TodoForm addTodo={addTodo} />
-            <div className="flex-1"
-                onClick={() => {todoInput.focus();}}
-            >
+        <>
+            <div className="container max-w-2xl p-6 pb-0 mx-auto md:my-auto flex flex-col">
+                {todos.map((todo) => (
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        updateTodo={updateTodo}
+                        onMark={handleMark}
+                    />
+                ))}
             </div>
-        </div>
+            <div
+                className="w-full mx-auto flex flex-col flex-1"
+                onClick={() => {
+                    todoInput.focus();
+                }}
+            >
+                <TodoForm addTodo={addTodo} />
+            </div>
+        </>
     );
 };
 

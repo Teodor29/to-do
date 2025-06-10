@@ -22,12 +22,15 @@ const TodoForm = ({ addTodo }) => {
     };
 
     return (
-        <div className="flex flex-col">
-            <form className="flex justify-between items-center">
+        <div className="w-full">
+            <form
+                className="flex justify-center items-center max-w-2xl mx-auto w-full px-6"
+                onSubmit={(e) => e.preventDefault()}
+            >
                 <input
-                    id = "todoInput"
+                    id="todoInput"
                     type="text"
-                    className="w-full p-2 pl-10 bg-transparent focus:outline-0 focus:border-b border-slate-500"
+                    className="w-full px-4 py-2 bg-transparent outline-0 focus:border-b focus:border-slate-500"
                     placeholder=""
                     onChange={handleUpdate}
                     onKeyDown={handleKeyDown}
