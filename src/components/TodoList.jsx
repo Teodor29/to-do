@@ -68,12 +68,12 @@ const TodoList = () => {
                 JSON.stringify([...removedTodos, ...removed])
             );
             markedTodos.current = [];
-        }, 3000);
+        }, 2500);
     };
 
     return (
         <>
-            <div className="container max-w-2xl p-6 pb-0 mx-auto md:my-auto flex flex-col">
+            <div className="container max-w-2xl px-6 mx-auto md:my-auto flex flex-col">
                 {todos.map((todo) => (
                     <TodoItem
                         key={todo.id}
