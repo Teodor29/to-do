@@ -2,9 +2,12 @@
 
 @theme {
     --color-text-primary: #fff;
-    --color-text-secondary: #8e8e8e;
-    --color-accent: #1f87bb;
-    --color-accent-light:rgb(87, 163, 201);
-    --color-background: #15181A;
-    --color-background2: #11171A;
+    --color-text-secondary: #bbb;
+    --color-accent: #ff9c12;
+    --color-accent-light:rgb(255, 173, 96);
+    --color-outline: #434343;
+    --color-red: #ff2718;
+    --color-background: #050505;
+    --color-background2: #121212;
+    --font-display: "Inter", sans-serif;
 }

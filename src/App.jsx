@@ -6,7 +6,7 @@ import Header from "./components/Header";
 function App() {
     return (
         <Router>
-            <div className="font-inter min-h-screen bg-background text-text-primary text-lg">
+            <div className="font-display min-h-screen bg-background text-text-primary text-lg">
                 <div className="mx-auto min-h-screen flex flex-col flex-grow">
                     <Header />
                     <Routes>

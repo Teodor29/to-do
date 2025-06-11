@@ -41,7 +41,7 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
                             checked={checked}
                             onChange={handleCheckbox}
                         />
-                        <div className="w-6 h-6 border-2 border-slate-500 rounded-full peer-checked:bg-accent peer-checked:border-accent"></div>
+                        <div className="w-6 h-6 border-2 border-outline rounded-full peer-checked:bg-accent"></div>
                     </label>
                     <input
                         type="text"

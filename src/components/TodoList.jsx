@@ -119,23 +119,10 @@ const TodoList = ({ history }) => {
         }, 2500);
     };
 
-    const handleClear = () => {
-        if (window.confirm("Are you sure you want to clear all todos?")) {
-            localStorage.removeItem("removedTodos");
-            window.location.reload();
-        }
-    };
-
     return (
         <>
             {history ? (
                 <div className="container max-w-2xl px-4 mx-auto md:my-auto flex flex-col flex-1">
-                    <button
-                        className="mr-auto hover:cursor-pointer hover:text-accent-light"
-                        onClick={handleClear}
-                    >
-                        Clear
-                    </button>
                     {removedTodos.map((todo) => (
                         <RemovedTodoItem
                             key={todo.id}
