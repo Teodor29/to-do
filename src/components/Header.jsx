@@ -1,21 +1,14 @@
+import { Link } from "react-router-dom";
 const Header = () => {
-    const handleClear = () => {
-        if (window.confirm("Are you sure you want to clear all todos?")) {
-            localStorage.removeItem("todos");
-            localStorage.removeItem("removedTodos");
-            window.location.reload();
-        }
-    };
-
     return (
-        <div className="container max-w-2xl mx-auto p-6 pb-2 flex">
+        <div className="container max-w-2xl mx-auto items-center justify-between p-4 pb-2 flex">
             <h1 className="text-accent font-bold text-4xl">To Do List</h1>
-            <button
-                className="ml-auto p-2 hover:cursor-pointer hover:underline"
-                onClick={handleClear}
+            <Link
+                to="/history"
+                className="hover:text-accent-light"
             >
-                Clear
-            </button>
+                History
+            </Link>
         </div>
     );
 };

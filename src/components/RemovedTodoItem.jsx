@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import TodoList from "./TodoList";
 
-const TodoItem = ({ todo, updateTodo, onMark }) => {
+const RemovedTodoItem = ({ todo, updateTodo, onMark }) => {
     const [checked, setChecked] = useState(false);
     const [inputValue, setInput] = useState(todo.text || "");
     const markedTodos = useRef([]);
@@ -26,7 +26,7 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
     };
 
     const handleCheckbox = () => {
-        onMark(todo.id, !checked);
+        onMark(todo.id, checked);
         setChecked(!checked);
     };
 
@@ -38,7 +38,7 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
                         <input
                             type="checkbox"
                             className="hidden peer"
-                            checked={checked}
+                            checked={!checked}
                             onChange={handleCheckbox}
                         />
                         <div className="w-6 h-6 border-2 border-slate-500 rounded-full peer-checked:bg-accent peer-checked:border-accent"></div>
@@ -46,7 +46,7 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
                     <input
                         type="text"
                         value={inputValue || todo.text}
-                        className="ml-4 focus:outline-hidden border-b border-transparent focus:border-slate-600 py-2 w-full"
+                        className="ml-4 text-text-secondary focus:outline-hidden border-b border-transparent focus:border-slate-600 py-2 w-full"
                         onClick={(e) => e.target.focus()}
                         onChange={handleUpdate}
                         onKeyDown={handleKeyDown}
@@ -58,4 +58,4 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
     );
 };
 
-export default TodoItem;
+export default RemovedTodoItem;
