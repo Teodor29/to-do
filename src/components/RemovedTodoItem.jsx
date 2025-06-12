@@ -41,12 +41,12 @@ const RemovedTodoItem = ({ todo, updateTodo, onMark }) => {
                             checked={!checked}
                             onChange={handleCheckbox}
                         />
-                        <div className="w-6 h-6 border-2 border-slate-500 rounded-full peer-checked:bg-accent peer-checked:border-accent"></div>
+                        <div className="w-6 h-6 border-2 border-outline rounded-full peer-checked:bg-accent peer-checked:border-accent"></div>
                     </label>
                     <input
                         type="text"
                         value={inputValue || todo.text}
-                        className="ml-4 text-text-secondary focus:outline-hidden border-b border-transparent focus:border-slate-600 py-2 w-full"
+                        className="ml-4 text-text-secondary focus:outline-hidden border-b border-outline focus:border-outline-light py-2 w-full"
                         onClick={(e) => e.target.focus()}
                         onChange={handleUpdate}
                         onKeyDown={handleKeyDown}

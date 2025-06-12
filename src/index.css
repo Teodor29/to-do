@@ -2,10 +2,11 @@
 
 @theme {
     --color-text-primary: #fff;
-    --color-text-secondary: #bbb;
+    --color-text-secondary:#aaa;
     --color-accent: #ff9c12;
     --color-accent-light:rgb(255, 173, 96);
     --color-outline: #434343;
+    --color-outline-light: #545454;
     --color-red: #ff2718;
     --color-background: #050505;
     --color-background2: #121212;

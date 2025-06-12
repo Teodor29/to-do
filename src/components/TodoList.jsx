@@ -122,7 +122,7 @@ const TodoList = ({ history }) => {
     return (
         <>
             {history ? (
-                <div className="container max-w-2xl px-4 mx-auto md:my-auto flex flex-col flex-1">
+                <div className="container max-w-xl px-4 mx-auto md:my-auto flex flex-col flex-1">
                     {removedTodos.map((todo) => (
                         <RemovedTodoItem
                             key={todo.id}
@@ -134,7 +134,7 @@ const TodoList = ({ history }) => {
                 </div>
             ) : (
                 <>
-                    <div className="container max-w-2xl px-4 mx-auto md:my-auto flex flex-col">
+                    <div className="container max-w-xl px-4 mx-auto md:my-auto flex flex-col">
                         {todos.map((todo) => (
                             <TodoItem
                                 key={todo.id}
