@@ -28,7 +28,7 @@ const Header = () => {
                         To Do List
                     </Link>
                     <button
-                        className="hover:cursor-pointer hover:text-red-400 ml-auto text-red p-2 gap-2 flex items-center"
+                        className="hover:cursor-pointer hover:text-red-400 ml-auto text-red gap-2 flex items-center"
                         onClick={handleClear}
                     >
                         Delete
