@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FaAngleLeft } from "react-icons/fa6";
-import { AiOutlineDelete } from "react-icons/ai";
-import { LuClipboardCheck } from "react-icons/lu";
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { FaAngleLeft } from 'react-icons/fa6'
+import { AiOutlineDelete } from 'react-icons/ai'
+import { LuClipboardCheck } from 'react-icons/lu'
 
 const ConfirmDialog = ({ onConfirm, onCancel }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -21,17 +21,17 @@ const ConfirmDialog = ({ onConfirm, onCancel }) => (
       </div>
     </div>
   </div>
-);
+)
 
 const Header = () => {
-  const location = useLocation();
-  const isHistory = location.pathname === "/history";
-  const [showConfirm, setShowConfirm] = useState(false);
+  const location = useLocation()
+  const isHistory = location.pathname === '/history'
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const handleConfirm = () => {
-    localStorage.removeItem("removedTodos");
-    window.location.reload();
-  };
+    localStorage.removeItem('removedTodos')
+    window.location.reload()
+  }
 
   return (
     <>
@@ -72,7 +72,7 @@ const Header = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

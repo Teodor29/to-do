@@ -30,12 +30,15 @@ If you want to run it locally:
 ```
 git clone https://github.com/Teodor29/to-do
 ```
+
 ```
 cd to-do
 ```
+
 ```
 npm install
 ```
+
 ```
 npm run dev
 ```
