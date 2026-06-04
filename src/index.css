@@ -1,22 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-text-primary: #f0f0f0;
-  --color-text-secondary: #a0a0a0;
-  --color-accent: #ff9c12;
-  --color-accent-light: #ffb84d;
-  --color-outline: #434343;
-  --color-outline-light: #545454;
-  --color-background: #050505;
-  --color-background2: #121212;
-  --font-display: 'Inter', sans-serif;
+  --color-page: oklch(10% 0 0);
+  --color-surface: oklch(15% 0 0);
+  --color-border: oklch(28% 0 0);
+  --color-fg: oklch(93% 0 0);
+  --color-fg-muted: oklch(65% 0 0);
+  --color-accent: oklch(77% 0.17 65);
+  --color-accent-hover: oklch(79% 0.18 65);
+  --color-danger: oklch(68% 0.18 27);
+
+  --radius-card: 1rem;
+  --radius-input: 0.75rem;
+
+  --font-sans: 'Inter', sans-serif;
 }
 
 @layer components {
   .btn {
-    @apply px-3 py-1.5 rounded-lg text-sm text-text-secondary hover:text-text-primary transition-colors cursor-pointer;
+    @apply inline-flex items-center rounded-lg px-4 py-2 border border-border hover:bg-border/30;
   }
   .btn-danger {
-    @apply text-red-400 hover:bg-red-400/10 hover:text-red-400;
+    @apply text-danger active:bg-danger/10 hover:bg-danger/10 border-danger/30;
+  }
+}
+
+@layer base {
+  button {
+    @apply cursor-pointer touch-manipulation;
+  }
+
+  html,
+  body {
+    @apply m-0 min-h-dvh bg-page text-fg font-sans;
   }
 }

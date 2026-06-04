@@ -36,13 +36,13 @@ const TodoForm = ({ addTodo }) => {
                         `}
         >
           <input type="checkbox" className="hidden peer" />
-          <div className="w-6 h-6 border-2 border-outline rounded-full peer-checked:bg-accent"></div>
+          <div className="w-6 h-6 border-2 border-border rounded-full peer-checked:bg-accent"></div>
         </label>
         <input
           id="todoInput"
           type="text"
           autoFocus
-          className="w-full ml-4 py-2 bg-transparent outline-0 focus:border-b focus:border-outline"
+          className="w-full ml-4 py-2 bg-transparent outline-0 focus:border-b focus:border-border"
           placeholder=""
           onChange={handleUpdate}
           onKeyDown={handleKeyDown}
