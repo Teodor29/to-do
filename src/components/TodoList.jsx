@@ -138,14 +138,12 @@ const TodoList = ({ history }) => {
               />
             ))}
           </div>
-          <div
+          <label
+            htmlFor="todoInput"
             className="w-full mx-auto flex flex-col flex-1"
-            onClick={() => {
-              todoInput.focus()
-            }}
           >
             <TodoForm addTodo={addTodo} />
-          </div>
+          </label>
         </div>
       )}
     </>
