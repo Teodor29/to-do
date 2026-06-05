@@ -127,7 +127,7 @@ const TodoList = ({ history }) => {
           ))}
         </div>
       ) : (
-        <>
+        <div className="flex flex-col flex-1">
           <div className="container max-w-xl px-4 mx-auto md:my-auto flex flex-col">
             {todos.map((todo) => (
               <TodoItem
@@ -146,7 +146,7 @@ const TodoList = ({ history }) => {
           >
             <TodoForm addTodo={addTodo} />
           </div>
-        </>
+        </div>
       )}
     </>
   )
