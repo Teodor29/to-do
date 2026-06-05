@@ -28,6 +28,12 @@ const TodoList = ({ history }) => {
     localStorage.setItem('todos', JSON.stringify([...todos, newTodo]))
   }
 
+  const deleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id)
+    setTodos(newTodos)
+    localStorage.setItem('todos', JSON.stringify(newTodos))
+  }
+
   const updateTodo = (id, text) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
@@ -134,6 +140,7 @@ const TodoList = ({ history }) => {
                 key={todo.id}
                 todo={todo}
                 updateTodo={updateTodo}
+                deleteTodo={deleteTodo}
                 onMark={handleMarkTodos}
               />
             ))}

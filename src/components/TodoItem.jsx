@@ -1,27 +1,25 @@
-import React, { useRef, useState } from 'react'
-import TodoList from './TodoList'
+import React, { useState } from 'react'
 
-const TodoItem = ({ todo, updateTodo, onMark }) => {
+const TodoItem = ({ todo, updateTodo, deleteTodo, onMark }) => {
   const [checked, setChecked] = useState(false)
   const [inputValue, setInput] = useState(todo.text || '')
-  const markedTodos = useRef([])
-  const removeTodoTimeout = useRef(null)
 
   const handleUpdate = (e) => {
     setInput(e.target.value)
   }
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && inputValue) {
+    if (e.key === 'Enter' && inputValue.trim()) {
       updateTodo(todo.id, inputValue)
-      setInput('')
+      document.getElementById('todoInput').focus()
     }
   }
 
   const handleBlur = () => {
-    if (inputValue) {
+    if (inputValue.trim()) {
       updateTodo(todo.id, inputValue)
-      setInput('')
+    } else {
+      deleteTodo(todo.id)
     }
   }
 
@@ -41,11 +39,11 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
               checked={checked}
               onChange={handleCheckbox}
             />
-            <div className="w-6 h-6 border-2 border-border rounded-full peer-checked:bg-accent"></div>
+            <div className="w-6 h-6 border-2 border-border rounded-full peer-checked:bg-accent "></div>
           </label>
           <input
             type="text"
-            value={inputValue || todo.text}
+            value={inputValue}
             className="ml-4 focus:outline-hidden py-2 w-full"
             onClick={(e) => e.target.focus()}
             onChange={handleUpdate}
