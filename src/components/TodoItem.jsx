@@ -46,7 +46,7 @@ const TodoItem = ({ todo, updateTodo, onMark }) => {
           <input
             type="text"
             value={inputValue || todo.text}
-            className="ml-4 focus:outline-hidden border-b border-border focus:border-accent py-2 w-full"
+            className="ml-4 focus:outline-hidden py-2 w-full"
             onClick={(e) => e.target.focus()}
             onChange={handleUpdate}
             onKeyDown={handleKeyDown}

@@ -5,12 +5,12 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { LuClipboardCheck } from 'react-icons/lu'
 
 const ConfirmDialog = ({ onConfirm, onCancel }) => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="absolute inset-0 bg-black/50" onClick={onCancel} />
-    <div className="relative bg-surface border border-border rounded-xl p-5 mx-4 w-full max-w-xs shadow-2xl">
-      <p className="text-text-primary text-sm mb-4">
-        Do you want to delete all completed todos?
-      </p>
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center"
+    onClick={onCancel}
+  >
+    <div className="absolute bg-surface border border-border rounded-xl p-5 mx-4 w-full max-w-xs shadow-2xl">
+      <p className="mb-4">Do you want to delete all completed todos?</p>
       <div className="flex gap-2 justify-end">
         <button onClick={onCancel} className="btn">
           Cancel
@@ -46,9 +46,9 @@ const Header = () => {
           <>
             <Link
               to="/"
-              className="hover:text-accent-hover flex items-center gap-2"
+              className="font-semibold hover:text-accent-hover flex items-center gap-2 py-2"
             >
-              <FaAngleLeft className="text-2xl" />
+              <FaAngleLeft className="text-xl" />
               To Do List
             </Link>
             <button
@@ -56,17 +56,17 @@ const Header = () => {
               onClick={() => setShowConfirm(true)}
             >
               <AiOutlineDelete />
-              Delete
+              Clear
             </button>
           </>
         ) : (
           <>
-            <h1 className="font-bold text-4xl">To Do List</h1>
+            <h1 className="font-bold text-2xl md:text-3xl">To Do List</h1>
             <Link
               to="/history"
-              className="hover:text-accent-hover text-2xl p-2"
+              className="hover:text-accent-hover text-2xl p-2 flex items-center justify-center"
             >
-              <LuClipboardCheck className="inline-block mr-2" />
+              <LuClipboardCheck />
             </Link>
           </>
         )}

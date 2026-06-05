@@ -46,7 +46,7 @@ const RemovedTodoItem = ({ todo, updateTodo, onMark }) => {
           <input
             type="text"
             value={inputValue || todo.text}
-            className="ml-4 text-fg-muted focus:outline-hidden border-b border-border focus:border-accent py-2 w-full"
+            className="ml-4 text-fg-muted focus:outline-hidden focus:border-accent py-2 w-full"
             onClick={(e) => e.target.focus()}
             onChange={handleUpdate}
             onKeyDown={handleKeyDown}

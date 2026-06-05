@@ -2,14 +2,14 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-page: oklch(10% 0 0);
-  --color-surface: oklch(15% 0 0);
-  --color-border: oklch(28% 0 0);
-  --color-fg: oklch(93% 0 0);
-  --color-fg-muted: oklch(65% 0 0);
-  --color-accent: oklch(77% 0.17 65);
-  --color-accent-hover: oklch(79% 0.18 65);
-  --color-danger: oklch(68% 0.18 27);
+  --color-page: oklch(0.1 0.01 65);
+  --color-surface: oklch(0.15 0.01 65);
+  --color-border: oklch(0.3 0.01 65);
+  --color-fg: oklch(0.92 0.01 65);
+  --color-fg-muted: oklch(0.6 0.01 65);
+  --color-accent: oklch(0.7 0.17 65);
+  --color-accent-hover: oklch(0.8 0.17 65);
+  --color-danger: oklch(0.68 0.18 27);
 
   --radius-card: 1rem;
   --radius-input: 0.75rem;
@@ -22,7 +22,7 @@
     @apply inline-flex items-center rounded-lg px-4 py-2 border border-border hover:bg-border/30;
   }
   .btn-danger {
-    @apply text-danger active:bg-danger/10 hover:bg-danger/10 border-danger/30;
+    @apply text-danger active:bg-danger/10 hover:bg-danger/20 border-danger/30;
   }
 }
 

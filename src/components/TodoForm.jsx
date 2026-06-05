@@ -42,7 +42,7 @@ const TodoForm = ({ addTodo }) => {
           id="todoInput"
           type="text"
           autoFocus
-          className="w-full ml-4 py-2 bg-transparent outline-0 focus:border-b focus:border-border"
+          className="w-full ml-4 py-2 bg-transparent outline-0"
           placeholder=""
           onChange={handleUpdate}
           onKeyDown={handleKeyDown}
