@@ -46,9 +46,9 @@ const Header = () => {
           <>
             <Link
               to="/"
-              className="font-semibold hover:text-accent-hover flex items-center gap-2 py-2"
+              className="font-semibold flex items-center gap-1.5 py-2 transition-colors hover:text-accent-hover"
             >
-              <FaAngleLeft className="text-xl" />
+              <FaAngleLeft />
               To Do List
             </Link>
             <button
@@ -64,7 +64,7 @@ const Header = () => {
             <h1 className="font-bold text-2xl md:text-3xl">To Do List</h1>
             <Link
               to="/history"
-              className="hover:text-accent-hover text-2xl p-2 flex items-center justify-center"
+              className="hover:text-accent-hover text-2xl p-2 flex items-center justify-center transition-colors"
             >
               <LuClipboardCheck />
             </Link>

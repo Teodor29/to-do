@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-[100dvh]">
-        <div className="mx-auto min-h-screen flex flex-col flex-grow">
+        <div className="mx-auto min-h-full flex flex-col flex-grow">
           <Header />
           <Routes>
             <Route path="/" element={<TodoList />} />
